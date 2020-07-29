@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    <button type="button" onclick="clickCounter()">点我!</button>
+    <div id="result"></div>
+  </p>
+  <script>
+    // 刷新后， js  运行  以页面为单位会刷新   解决方案  html5  存储， 
+    // cookie   localStorage   sessionStorage
+    // 三者区别   
+    // let count = 0;
+    // let result = document.getElementById('result'); // 查询   时间开销
+    // function clickCounter(){
+    //   count ++;
+    //   result.innerText = count; // 优化
+    // }
+    // Storage  将点击保存到本地  
+    // cookie 浏览器存储的文本， http 每次都带 
+    // localStorage 把一些关键的 js  css 本地化  下次打开会更快
+    function clickCounter() {
+      const result = document.getElementById('result');
+      if (typeof Storage !== "undefined"){  // 作用
+        // 作用  浏览器支持本地Storage  浏览器嗅探
+        if (sessionStorage.clickCounter){  // 设置了吗？
+          sessionStorage.clickCounter = Number(sessionStorage.clickCounter) + 1;
+        }
+        else{
+          sessionStorage.clickCounter = 1;
+        }
+        result.innerHTML = `你在按钮上已经点击了${sessionStorage.clickCounter}次`
+      }
+      else{
+        result.innerHTML = "Sorry, 浏览器不支持";
+      }
+    }
+  </script>
+</body>
+</html>

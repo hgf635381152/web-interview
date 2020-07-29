@@ -1,0 +1,34 @@
+
+<script>
+
+  let r = '909090'    // [] 里的是动态变化的
+  let obj = {
+    [r]: 123,
+    'r': 456
+  }
+  console.log(obj, obj[r])
+  console.log(obj['r'],obj.r)
+
+  // 对元编程： 对编程语言的再编程
+  class myArr {
+    static a = 1;
+    static [Symbol.hasInstance]() {   // 某个类的Symbol.hasInstance 可以被重写 自己去定义它的逻辑
+      return false;
+    }
+  }
+  let arr = new myArr();
+  console.log(myArr[Symbol.hasInstance](arr))
+  console.log(arr instanceof myArr);
+
+
+  // [] instance Array
+  function myInstance(obj, Constructor) {
+    let proto = obj.__proto__;
+    if(proto === Constructor.prototype) {
+      return true
+    }
+    if(proto === null) return false;
+    return myInstance(proto, Constructor);
+  }
+  console.log(myInstance([], Array))
+</script>
