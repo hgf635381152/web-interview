@@ -1,0 +1,150 @@
+<style>
+  div {
+    background-color: grey;
+    display: inline-block;
+    margin: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    ;
+  }
+
+  .green.light {
+    background-color: green;
+  }
+
+  .yellow.light {
+    background-color: yellow;
+  }
+
+  .red.light {
+    background-color: red;
+  }
+</style>
+
+
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="green"></div>
+
+
+<!-- <button id="next" onclick="go();">开始</button> -->
+
+<script>
+  function red() {
+    clear()
+    const red = document.querySelector('.red')
+    red.classList.add('light')
+  }
+  
+  function yellow() {
+    clear()
+    const yellow = document.querySelector('.yellow')
+    yellow.classList.add('light')
+  }
+  function green() {
+    clear()
+    const green = document.querySelector('.green')
+    green.classList.add('light')
+  }
+  function clear() {
+    var lights = document.getElementsByTagName("div");
+    for (var i = 0; i < 3; i++)
+    {
+      lights[i].classList.remove("light")
+    }
+  }
+  //  red 1s  yellow 2s  green 3s 循环 5次
+  for(let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        red()
+      }, i*6000)
+      setTimeout(() => {
+        yellow()
+      }, 1000+i*6000)
+      setTimeout(() => {
+        green()
+      }, 3000+i*6000)
+  }
+
+    // const sleep = (time) => {
+    //   return new Promise((resolve) => {
+    //     setTimeout(resolve, time);
+    //   });
+    // };
+    // function light() {
+    //   sleep(1).then(() => {
+    //     red()
+    //   }).then(() => {
+    //     sleep(1000).then(() => {
+    //       yellow()
+    //     }).then(() => {
+    //       sleep(2000).then(() => {
+    //         green()
+    //       })
+    //     })
+    //   })
+    // }
+    // for (let i = 0; i < 5; i++) {
+    //   setTimeout(() => {
+    //     light()
+    //   }, i * 6000)
+    // }
+
+     // red() 1s  yellow() 2s green() 3s 循环 5次
+      // callback
+      // 1次 递归 4次
+      // 1次 for 循环
+      let i = 0;
+      function once() {
+        // i ++
+        // console.log(i);
+        // if (i > 5) return;
+        return new Promise((resolve, reject) => {
+          red()
+          setTimeout(() => {
+            yellow();
+            setTimeout(() => {
+              green();
+              setTimeout(() => {
+                // 这里完成 一次
+                // once();
+                resolve()
+              }, 3000)
+            }, 2000)
+          }, 1000)
+        })
+      }
+      // once();
+      async function loop() {
+        for (let i = 0; i < 5; i++) {
+          await once();
+        }
+      }
+      // loop()
+
+      function sleep(time) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        })
+      }
+      async function loop2() {
+        for (let i = 0; i < 5; i++) {
+          await onceLight() // ??
+        }
+      }
+      async function onceLight() {
+        red();
+        await sleep(1000);    // Promsie.then
+        yellow();
+        await sleep(2000);
+        green()
+        await sleep(3000);
+      }
+      // onceLight 返回 ？？
+      // async 调用 返回的是 一个 promise
+      // 外界 是可以知道 这个 async函数 有没有调用完成的
+      loop2();
+</script>

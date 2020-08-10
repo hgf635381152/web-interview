@@ -1,0 +1,24 @@
+<script>
+  let count = 0;
+  function a() {
+    if (count % 2 === 0) {
+      return 0
+    }
+    else {
+      return 1
+    }
+    count++;
+  }
+  const a1 = (function() {
+    let c = 0;
+    return function() {
+      c++;
+      if (c % 2 === 0) {
+        return 0
+      }
+      else {
+        return 1
+      }
+    }
+  })
+</script>
