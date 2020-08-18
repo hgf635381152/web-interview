@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原生</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      // resolve('解决')
+      reject('拒绝')
+      // setTimeout(() => {
+      // resolve('解决')
+      // }, 1000);
+    }).then()
+      .then(value => {
+        // throw new Error('出错了')
+        console.log(value);
+        return '后盾人'
+      }, reason => {
+        console.log(reason)
+        return '错误'
+      })
+      .then(
+        value => {
+          console.log('success:' + value);
+        }, reason => [
+          console.log('Error:' + reason)
+        ]
+      )
+  </script>
+</body>
+
+</html>

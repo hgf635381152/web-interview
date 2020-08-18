@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的</title>
+  <script src='./myPromise.js'></script>
+</head>
+
+<body>
+  <script>
+    let p = new MyPromise((resolve, reject) => {
+      resolve('解决')
+      // reject('拒绝')
+      // setTimeout(() => {
+      // resolve('解决')
+      // }, 1000);
+    })
+      .then(value => {
+        // throw new Error('出错了')
+        console.log(value);
+        // return '后盾人'
+        return new MyPromise((resolve,reject)=>{
+          resolve('后盾人');
+        })
+      }, reason => {
+        console.log(reason)
+        return '错误'
+      })
+      .then(
+        value => {
+          console.log('success:' + value);
+        }, reason => [
+          console.log('Error:' + reason)
+        ]
+      )
+    // console.log('111111111111')
+  </script>
+</body>
+
+</html>

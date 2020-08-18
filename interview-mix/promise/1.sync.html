@@ -1,0 +1,24 @@
+<script>
+  // [1,2,3].forEach((item, i) => {})
+  function MyPromise(fn) {
+    this.value = undefined;
+    let self = this;
+    function resolve(value) {
+      self.value = value;
+      console.log(value);
+    }
+    function reject() { }
+    fn(resolve, reject);
+  }
+  MyPromise.prototype.then = function (onFulfilled, onRejected) {
+    onFulfilled(this.value)
+  }
+  new MyPromise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 2000);
+  })
+    .then((res) => {
+      console.log(res);
+    }, () => { })
+</script>
