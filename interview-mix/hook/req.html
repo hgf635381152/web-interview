@@ -1,0 +1,22 @@
+<script>
+
+  const _XMLHttpRequest = window.XMLHttpRequest
+  window.XMLHttpRequest = function XMLHttpRequest() {
+    const _xhr = new _XMLHttpRequest()
+    _xhr.addEventListener('readystatechange', function() {
+      if (_xhr.readyState === 4) {
+        console.log(_xhr.responseURL, '请求成功了')
+      }
+    })
+    return _xhr
+  }
+
+
+  const xhr = new XMLHttpRequest()
+  xhr.open()
+  xhr.onreadystatechange = () => {}
+  xhr.send()
+
+  
+  
+</script>
