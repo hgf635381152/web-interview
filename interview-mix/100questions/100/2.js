@@ -16,4 +16,5 @@ const person = new Person('Tony')
 console.log(person.name)
 console.log(person.sayName)
 console.log(person instanceof Person)
+console.log(person.sayName)
 
