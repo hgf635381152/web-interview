@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="showValue"></div>
+  <script src="https://unpkg.com/mobx@5.15.6/lib/mobx.umd.js"></script>
+  <script>
+    // observerable
+    let obj = {a: 1, b: 2}
+    let proxyObj = mobx.observable(obj)
+    mobx.autorun(() => {
+      console.log('run 1')
+      document.getElementById('showValue').innerHTML = proxyObj.a
+    })
+    mobx.autorun(() => {
+      console.log('run 2')
+      console.log(proxyObj.b)
+    })
+    // 收集依赖: 知道哪个  autoRun 需要哪个 key
+    setInterval(() => {
+      proxyObj.a = ++ proxyObj.a
+    }, 1000)
+    /*
+      {
+        xxxObj: {
+          a: [ run1 ]
+          b: [ run2 ]
+        }
+      }
+    */
+    
+  </script>
+</body>
+</html>

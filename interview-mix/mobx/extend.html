@@ -1,0 +1,22 @@
+<script>
+  function Foo() {
+    this.color = 'red'
+  }
+  Foo.prototype.say = function() {
+    console.log('say')
+  }
+  // new 的行为实现的
+  // f.__proto__ === Foo.prototype
+  let f = new Foo()
+  f.say()  // f 为什么可以拿到 say
+
+  function Bar() {
+
+  }
+  Bar.prototype = new Foo()
+  // Bar.prototype.say()
+  // Bar.prototype.__proto__ = Foo.prototype
+  let b = new Bar()
+  console.log(b)
+  // 属性 和 方法 继承
+</script>
