@@ -1,3 +1,10 @@
+## 说说HTML5在标签、属性、存储、API上的新特性
+标签：新增语义化标签（aside / figure / section / header / footer / nav等），增加多媒体标签video和audio，使得样式和结构更加分离
+属性：增强表单，主要是增强了input的type属性；meta增加charset以设置字符集；script增加async以异步加载脚本
+存储：增加localStorage、sessionStorage和indexedDB，引入了application cache对web和应用进行缓存
+API：增加拖放API、地理定位、SVG绘图、canvas绘图、Web Worker、WebSocket
+
+
 ## 对axios的理解   jsonp原理
 jsonp利用的是script没有跨域的限制，通过在script里面传入跨域的地址，然后将回调函数以参数的形式穿进去，就可以在后端获取到数据，自己定义好的回调函数里面就可以获取数据。
 
@@ -28,8 +35,26 @@ jsonp利用的是script没有跨域的限制，通过在script里面传入跨域
 
 
 ## event-loop 事件循环机制
+消息队列   宏任务与微任务  先进先出 
+每次执行完宏任务就会把当前微任务全部执行完再执行下一个宏任务
 
 
+## cookies、localStorage、sessionStorage
+cookies： HTML5之前本地储存的主要方式，大小只有4k，HTTP请求头会自动带上cookie，兼容性好
+localStorage：HTML5新特性，持久性存储，即使页面关闭也不会被清除，以键值对的方式存储，大小为5M
+sessionStorage：HTML5新特性，操作及大小同localStorage，和localStorage的区别在于sessionStorage在选项卡(页面)被关闭时即清除，且不同选项卡之间的sessionStorage不互通
+
+Cookie
+1. 服务器通过Set-Cookie头给客户端一段字符串
+2. 客户端每次访问相同域名的网页的时候，必须带上这段字符串
+3. 客户端要在一段时间内保存这个Cookie
+注意：前端不要写Cookie,影响性能
+
+Session
+1. 将SessionId通过Cookie发给客户端
+2. 客户端访问服务器时，服务器读取SessionId
+3. 服务器中有一块内存（哈希表）保存了所有session
+4. 通过SessionId我们可以得到对应用户的隐私信息，如用户名密码等
 
 
 # 性能优化

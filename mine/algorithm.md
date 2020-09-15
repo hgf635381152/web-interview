@@ -43,3 +43,30 @@ let widthTraversal2 = (node) => {
   return nodes
 }
 ```
+
+## 快速排序
+从数组中选择一个元素作为基准点
+排序数组，所有比基准值小的元素摆放在左边，而大于基准值的摆放在右边。每次分割结束以后基准值会插入到中间去。
+最后利用递归，将摆放在左边的数组和右边的数组在进行一次上述的1和2操作。
+```js
+var quickSort = function(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  var pivotIndex = Math.floor(arr.length / 2);
+  var pivot = arr.splice(pivotIndex, 1)[0];
+  var left = [];
+  var right = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quickSort(left).concat([pivot], quickSort(right));
+};
+```
+
+## 二分查找
