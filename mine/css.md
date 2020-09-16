@@ -5,6 +5,16 @@
 - fixed 和absolute类似，但是它是相对于屏幕视口的位置来指定元素位置。
 - sticky 盒位置根据正常流计算，然后相对于该元素在流中的 flow root（BFC）和最近的块级祖先元素定位。在所有情况下，该元素定位均不对后续元素造成影响。
 
+## 行内元素、块级元素
+1. 行内元素
+最常使用的是span，另外行内元素还包括img、a、big、small、sub、sup、strong、u、button(属性默认为display：inline-block)
+行内元素的特点：相邻的行内元素不换行，设置宽高无效，margin设置仅左右方向有效，上下无效，padding设置上右下左都有效。
+2. 块级元素
+块级元素最具有代表性的就是div，其余的有p、h1~h6、table、ul、li、ol、等等以及H5新增的属性header、section、aside、footer等等。
+块级元素的特点，能够自动换行开启新的一行，能够设置宽高，margin和padding对上下左右四个方向设置均有效。
+3. 行内块级元素
+元素排列在一行，不会自动换行，可设置宽度和高度以及外边距和内边距的所有样式。
+
 
 
 ## 清除浮动
@@ -57,6 +67,13 @@ rem + viewport   设置inital-scale
 
 ## 盒模型
 盒模型就是 将**content内容区域+padding+border+margin**
+
+1. W3C 标准盒模型：
+属性width,height只包含内容content，不包含border和padding。
+2. IE 盒模型：
+属性width,height包含border和padding，指的是content+padding+border。
+
+
 
 ## BFC
 BFC全称 Block Formatting Context 即块级格式上下文，简单的说，BFC是页面上的一个隔离的独立容器，不受外界干扰或干扰外界
