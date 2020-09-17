@@ -58,6 +58,11 @@ rem + viewport   设置inital-scale
 - 双飞翼布局
 
 ## 选择器权重
+!important
+行内样式
+id
+class
+通配符(*)
 
 
 
