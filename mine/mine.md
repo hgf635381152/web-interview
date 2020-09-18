@@ -10,6 +10,8 @@
 
 6. em？  长度单位  rem   px   vw/vh
 
+7. 伪元素和伪类的区别?
+
 7. html5新的标签？  header  footer   nav  video
 
 8. script标签放在不同位置有什么影响，css为什么要放在js前面？   等待下载  阻塞页面解析  script异步加载？ 加async/defer
@@ -44,6 +46,15 @@
 升序(sort/冒泡)
 
 22. 项目中用的mocker和egg也经常问  直接裂开
+
+23. nexttic
+
+24. vue双向绑定原理
+
+25. 了解的排序方法？
+- 冒泡   平均n²       最好n       最坏n²   稳定
+- 选择   平均n²       最好n²      最坏n²   不稳定
+- 快速   平均nlogn    最好nlogn   最坏n²   不稳定
 
 
 
