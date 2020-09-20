@@ -56,6 +56,16 @@ Session
 3. 服务器中有一块内存（哈希表）保存了所有session
 4. 通过SessionId我们可以得到对应用户的隐私信息，如用户名密码等
 
+## GET和POST的区别
+GET - 从指定的资源请求数据。
+POST - 向指定的资源提交要被处理的数据。
+
+GET：不同的浏览器和服务器不同，一般限制在2~8K之间，更加常见的是1k以内。
+GET和POST的底层也是TCP/IP，GET/POST都是TCP链接。
+GET产生一个TCP数据包；POST产生两个TCP数据包。
+对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；
+而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。
+
 
 # 前端性能优化
 
