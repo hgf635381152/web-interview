@@ -139,19 +139,6 @@ result.then(function(img){
 
 1. 节流
 ```js
-const debounce = (fn, delay) => {
-  let timer = null;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      fn.apply(this, args);
-    }, delay);
-  };
-};
-```
-
-2. 防抖
-```js
 const throttle = (fn, delay) => {
   let flag = true;
   return (...args) => {
@@ -160,6 +147,19 @@ const throttle = (fn, delay) => {
     setTimeout(() => {
       fn.apply(this, args);
       flag = true;
+    }, delay);
+  };
+};
+```
+
+2. 防抖
+```js
+const debounce = (fn, delay) => {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
     }, delay);
   };
 };
