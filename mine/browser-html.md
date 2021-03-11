@@ -85,3 +85,6 @@ GET产生一个TCP数据包；POST产生两个TCP数据包。
 - 组件加载
 1. 组件懒加载 (lazy + Suspense)
 2. 组件预加载
+
+## Web性能优化
+1. 减少重绘和重排，利用合成(例如使用transform属性)
