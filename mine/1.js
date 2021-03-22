@@ -65,17 +65,128 @@
 // _printName()
 // bar.printName()
 
-var myObj = {
-  name : " 极客时间 ", 
-  showThis: function(){
-    console.log(this)
-    var bar = ()=>{
-      this.name = " 极客邦 "
-      console.log(this)
+// var myObj = {
+//   name : " 极客时间 ", 
+//   showThis: function(){
+//     console.log(this)
+//     var bar = ()=>{
+//       this.name = " 极客邦 "
+//       console.log(this)
+//     }
+//     bar()
+//   }
+// }
+// myObj.showThis()
+// console.log(myObj.name)
+// console.log(window.name)
+
+// function* genDemo() {
+//   console.log(" 开始执行第一段 ")
+//   yield 'generator 2'
+
+//   console.log(" 开始执行第二段 ")
+//   yield 'generator 2'
+
+//   console.log(" 开始执行第三段 ")
+//   yield 'generator 2'
+
+//   console.log(" 执行结束 ")
+//   return 'generator 2'
+// }
+
+// console.log('main 0')
+// let gen = genDemo()
+// console.log(gen.next())
+// console.log('main 1')
+// console.log(gen.next())
+// console.log('main 2')
+// console.log(gen.next())
+// console.log('main 3')
+// console.log(gen.next())
+// console.log('main 4')
+
+// async function foo() {
+//   console.log(1)
+//   let a = await 100
+//   console.log(a)
+//   console.log(2)
+// }
+// console.log(0)
+// foo()
+// console.log(3)
+
+
+// async function foo() {
+//   console.log('foo')
+// }
+// async function bar() {
+//   console.log('bar start')
+//   await foo()
+//   console.log('bar end')
+// }
+// console.log('script start')
+// setTimeout(function () {
+//   console.log('setTimeout')
+// }, 0)
+// bar();
+// new Promise(function (resolve) {
+//   console.log('promise executor')
+//   resolve();
+// }).then(function () {
+//   console.log('promise then')
+// })
+// console.log('script end')
+
+// console.log(typeof(null), Object.prototype.toString.call(null))
+
+
+// function mp(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         let flag = true
+//         for (let j = 0; j < arr.length - i - 1; j++) {
+//             if (arr[j] > arr[j + 1]) {
+//                 let temp = arr[j]
+//                 arr[j] = arr[j + 1]
+//                 arr[j + 1] = temp
+//                 flag = false
+//             }
+//         }
+//         console.log(`第${i+1}次排序`)
+//         // if (flag) break
+//     } 
+//     return arr
+// }
+
+// function mp(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         let min = arr[i]
+//         let index = i
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[j] < min) {
+//                 min = arr[j]
+//                 index = j
+//             }
+//         }
+//         arr[index] = arr[i]
+//         arr[i] = min 
+//     }
+//     return arr
+// }
+
+let left = []
+let right = []
+function mp(arr, left, right) { 
+    if (arr.length <= 1) return arr
+    let index = arr.length / 2 || 0
+    left = []
+    right = []
+    const pivotValue = arr.splice(index, 1)[0]
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] > pivotValue ? right.push(arr[i]) : left.push(arr[i])
     }
-    bar()
-  }
+    return [...mp(left), pivotValue, ...mp(right)]
 }
-myObj.showThis()
-console.log(myObj.name)
-console.log(window.name)
+
+console.log(mp([1,8,3,7,5,2], left, right))
+
+

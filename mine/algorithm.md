@@ -69,4 +69,75 @@ var quickSort = function(arr) {
 };
 ```
 
-## 二分查找
+## 排序
+
+1. 冒泡排序
+每一次遍历 都从后往前进行比较， 相邻的两两比较大小，小的向前浮动 时间复杂度 O(n^2^)
+```js
+function bubbleSort(target) {
+    let temp = null
+
+    for(let i = 0; i < target.length - 1; i++) {
+        for(let j = target.length - 1; j > i; j--) {
+            if (target[j] < target[j - 1]) {
+                temp = target[j]
+                target[j] = target[j - 1]
+                target[j - 1] = temp
+            }
+        }
+
+        console.log(`第 ${i + 1} 次排序`)
+    }
+
+    return target
+}
+```
+复杂度 O(n^2)
+定义一个布尔值
+在遍历每一次的时候，如果发生位置交换，就改变布尔值 当这一次循环结束之后，判断该布尔值是否变化 变化了则继续下一次，没变则退出
+```js
+function bubbleSort(target) {
+    let temp = null
+    let flag = false
+    for(let i = 0; i < target.length - 1; i++) {
+        for(let j = target.length - 1; j > i; j--) {
+            if (target[j] < target[j - 1]) {
+                temp = target[j]
+                target[j] = target[j - 1]
+                target[j - 1] = temp
+                flag = true
+            }
+        }
+
+        console.log(`第 ${i + 1} 次排序`)
+        if (!flag) break
+    }
+
+    return target
+}
+```
+
+2. 选择排序
+从左到右开始找，每遍历一次将最小值跟当前遍历的第一个元素交换 时间复杂度 O(n^2 ) 
+```js
+function selctionSort(target) {
+    for (let i = 0; i < target.length - 1; i++) {
+        let min = target[i]
+        let minIndex = i
+
+        for (let j = i + 1; j < target.length; j++) {
+            if (target[j] < min) {
+                min = target[j]
+                minIndex = j
+            }
+        }
+
+        console.log(`第${i + 1}次循环`, target)
+        if (minIndex === i) continue
+        target[minIndex] = target[i]
+        target[i] = min
+    }
+
+    return target
+}
+```
